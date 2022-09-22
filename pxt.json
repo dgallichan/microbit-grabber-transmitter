@@ -1,5 +1,5 @@
 {
-    "name": "TransmitterGrabber",
+    "name": "Transmitter-Grabber",
     "description": "",
     "dependencies": {
         "core": "*",
