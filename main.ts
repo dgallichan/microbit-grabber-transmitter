@@ -14,7 +14,7 @@ basic.forever(function () {
     } else if (input.buttonIsPressed(Button.B)) {
         radio.sendValue("Drive", 0)
         radio.sendValue("Turn", 0)
-        radio.sendValue("Grabber", Math.map(input.rotation(Rotation.Pitch), -90, 90, -1000, 1000))
+        radio.sendValue("Grabber", Math.map(input.rotation(Rotation.Pitch), -90, 90, 0, 1000))
     } else {
         radio.sendValue("Drive", 0)
         radio.sendValue("Turn", 0)
