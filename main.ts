@@ -8,7 +8,8 @@ basic.showLeds(`
     `)
 basic.forever(function () {
     if (input.buttonIsPressed(Button.A)) {
-        radio.sendValue("Drive", Math.map(input.rotation(Rotation.Pitch), -90, 90, -1000, 1000))
+        // pitch downwards is a negative value, and this corresponds to what we want to mean 'forwards'
+        radio.sendValue("Drive", Math.map(input.rotation(Rotation.Pitch), -90, 90, 1000, -1000))
         radio.sendValue("Turn", Math.map(input.rotation(Rotation.Roll), -90, 90, -1000, 1000))
         radio.sendValue("Grabber", -9999)
     } else if (input.buttonIsPressed(Button.B)) {
