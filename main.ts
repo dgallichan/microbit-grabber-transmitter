@@ -32,7 +32,7 @@ input.onButtonPressed(Button.AB, function () {
 })
 let makingChoice = false
 let groupNumber = 0
-groupNumber = 0
+groupNumber = 255
 radio.setGroup(groupNumber)
 basic.showLeds(`
     . # # # .
@@ -62,6 +62,6 @@ basic.forever(function () {
         radio.sendValue("Drive", 0)
         radio.sendValue("Turn", 0)
         radio.sendValue("Grabber", -999)
-        radio.sendValue("Spin", -999)
+        radio.sendValue("Spin", 0)
     }
 })
