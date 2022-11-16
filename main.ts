@@ -62,6 +62,7 @@ basic.forever(function () {
         radio.sendValue("Drive", 0)
         radio.sendValue("Turn", 0)
         radio.sendValue("Grabber", -999)
-        radio.sendValue("Spin", 0)
+        // MARS rover needs this so that wheels don't steer back to spin mode all the time when you stop
+        radio.sendValue("Spin", -999)
     }
 })
