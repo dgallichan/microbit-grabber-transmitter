@@ -1,9 +1,9 @@
-input.onButtonPressed(Button.AB, function () {
+input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
     basic.showNumber(groupNumber)
     makingChoice = true
     while (makingChoice) {
         basic.pause(200)
-        if (input.logoIsPressed()) {
+        if (input.buttonIsPressed(Button.AB)) {
             makingChoice = false
             if (groupNumber <= -1) {
                 groupNumber = groupNumber + 256
@@ -36,28 +36,28 @@ groupNumber = 255
 radio.setGroup(groupNumber)
 basic.showLeds(`
     . # # # .
-    . . # . .
-    . . # . .
+    . # # # .
+    . # . # .
     # . . . #
     . # # # .
     `)
 basic.forever(function () {
-    if (input.buttonIsPressed(Button.A)) {
-        // pitch downwards is a negative value, and this corresponds to what we want to mean 'forwards'
-        radio.sendValue("Drive", input.rotation(Rotation.Pitch) * -1)
-        radio.sendValue("Turn", input.rotation(Rotation.Roll))
+    if (input.buttonIsPressed(Button.AB)) {
+        radio.sendValue("Drive", 0)
+        radio.sendValue("Turn", 0)
         radio.sendValue("Grabber", -999)
-        radio.sendValue("Spin", -999)
+        radio.sendValue("Spin", input.rotation(Rotation.Roll))
     } else if (input.buttonIsPressed(Button.B)) {
         radio.sendValue("Drive", 0)
         radio.sendValue("Turn", 0)
         radio.sendValue("Grabber", input.rotation(Rotation.Pitch))
         radio.sendValue("Spin", -999)
-    } else if (input.logoIsPressed()) {
-        radio.sendValue("Drive", 0)
-        radio.sendValue("Turn", 0)
+    } else if (input.buttonIsPressed(Button.A)) {
+        // pitch downwards is a negative value, and this corresponds to what we want to mean 'forwards'
+        radio.sendValue("Drive", input.rotation(Rotation.Pitch) * -1)
+        radio.sendValue("Turn", input.rotation(Rotation.Roll))
         radio.sendValue("Grabber", -999)
-        radio.sendValue("Spin", input.rotation(Rotation.Roll))
+        radio.sendValue("Spin", -999)
     } else {
         radio.sendValue("Drive", 0)
         radio.sendValue("Turn", 0)
